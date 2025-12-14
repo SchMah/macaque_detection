@@ -2,7 +2,7 @@
 Conf file
 """
 from datetime import datetime
-
+import torch
 # -----------------------
 # ------------ General Data Directories -------------
 # -----------------------
@@ -33,7 +33,13 @@ MODEL_DATA = "data.yaml"
 BASE_MODEL = "yolo11m.pt"
 
 # device to run training on. Options are 'mps' (if using mac), cuda, or cpu
-DEVICE = 'mps'
+if torch.cuda.is_available():
+    DEVICE = 'cuda'
+elif torch.backends.mps.is_available():
+    DEVICE = 'mps'
+else:
+    DEVICE = 'cpu'
+
 
 # Hyperparameters
 EPOCH = 200

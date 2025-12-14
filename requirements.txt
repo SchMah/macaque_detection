@@ -2,3 +2,4 @@ pandas==2.3.3
 ultralytics==8.3.145
 opencv-python==4.11.0.86
 matplotlib==3.9.2
+torch
